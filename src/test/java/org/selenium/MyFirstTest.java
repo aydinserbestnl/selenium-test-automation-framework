@@ -1,6 +1,7 @@
 package org.selenium;
 
 import org.selenium.pom.base.BaseTest;
+import org.selenium.pom.objects.BillingAddress;
 import org.selenium.pom.pages.CartPage;
 import org.selenium.pom.pages.CheckoutPage;
 import org.selenium.pom.pages.HomePage;
@@ -10,13 +11,26 @@ import org.testng.annotations.Test;
 
 import java.awt.*;
 
-public class BeginningTestWithBaseTest extends BaseTest {
+public class MyFirstTest extends BaseTest {
+
     @Test
     public void guestCheckout() throws InterruptedException {
-        // We inherit an initialized WebDriver from BaseTest (protected field).
-        // BaseTest creates it in @BeforeMethod by calling:
-        //   new DriverManager().initializeDriver();
-        // Here we pass that driver into the Page Object (dependency injection).
+        //hard-coded
+        BillingAddress billingAddress = new BillingAddress("user", "demo", "San Fransisco", "San Fransisco",
+                "12345", "abc@gmail.com");
+
+        /*
+        with builder pattern
+        BillingAddress billingAddress = new BillingAddress().
+                setFirstName("user").
+                setLastName("demo").
+                setAddressLine("San Fransisco").
+                setCity("San Fransisco").
+                setPostalCode("12345").
+                setEmail("abc@gmail.com");
+
+         */
+
         StorePage storePage = new HomePage(driver).
                 load().
                 navigateToStoreUsingMenu().
@@ -30,15 +44,9 @@ public class BeginningTestWithBaseTest extends BaseTest {
         //td[class='product-name'] a
         Assert.assertEquals(cartPage.getProductName(),
                 "Blue Shoes");
-        CheckoutPage checkoutPage = cartPage.clickCheckoutBtn();
-        //builder pattern
-        checkoutPage.
-                enterFirstName("user").
-                enterLastName("demo").
-                enterAddressFld("San Fransisco").
-                enterCityFld("San Fransisco").
-                enterPostCodeFld("12345").
-                enterEmail("abc@gmail.com").
+        CheckoutPage checkoutPage = cartPage.
+                clickCheckoutBtn().
+                setBillingAddress(billingAddress).
                 pause(1500).
                 placeOrder();
 
@@ -48,6 +56,13 @@ public class BeginningTestWithBaseTest extends BaseTest {
     }
     @Test
     public void loginAndCheckout() throws InterruptedException, AWTException {
+        BillingAddress billingAddress = new BillingAddress();
+        billingAddress.setFirstName("user");
+        billingAddress.setLastName("demo");
+        billingAddress.setAddressLine("San Fransisco");
+        billingAddress.setCity("San Fransisco");
+        billingAddress.setPostalCode("12345");
+        billingAddress.setEmail("abc@gmail.com");
         StorePage storePage = new HomePage(driver).
                 load().
                 navigateToStoreUsingMenu().
@@ -66,12 +81,7 @@ public class BeginningTestWithBaseTest extends BaseTest {
         checkoutPage.clickLoginBtn();
         Thread.sleep(2000);
         checkoutPage.loginAsCustomer("user", "1234").
-                enterFirstName("user").
-                enterLastName("demo").
-                enterAddressFld("San Fransisco").
-                enterCityFld("San Fransisco").
-                enterPostCodeFld("12345").
-                enterEmail("abc@gmail.com").
+                setBillingAddress(billingAddress).
                 pause(1500).
                 placeOrder();
         Thread.sleep(5000);
