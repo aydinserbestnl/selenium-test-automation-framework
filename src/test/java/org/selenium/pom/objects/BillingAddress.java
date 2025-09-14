@@ -1,0 +1,4 @@
+package org.selenium.pom.objects;
+
+public class BillingAddress {
+}
