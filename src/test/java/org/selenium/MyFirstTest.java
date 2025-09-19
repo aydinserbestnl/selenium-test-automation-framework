@@ -2,48 +2,39 @@ package org.selenium;
 
 import org.selenium.pom.base.BaseTest;
 import org.selenium.pom.objects.BillingAddress;
+import org.selenium.pom.objects.Product;
+import org.selenium.pom.objects.User;
 import org.selenium.pom.pages.CartPage;
 import org.selenium.pom.pages.CheckoutPage;
 import org.selenium.pom.pages.HomePage;
 import org.selenium.pom.pages.StorePage;
+import org.selenium.pom.utils.JacksonUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class MyFirstTest extends BaseTest {
 
     @Test
-    public void guestCheckout() throws InterruptedException {
-        //hard-coded
-        BillingAddress billingAddress = new BillingAddress("user", "demo", "San Fransisco", "San Fransisco",
-                "12345", "abc@gmail.com");
-
-        /*
-        with builder pattern
-        BillingAddress billingAddress = new BillingAddress().
-                setFirstName("user").
-                setLastName("demo").
-                setAddressLine("San Fransisco").
-                setCity("San Fransisco").
-                setPostalCode("12345").
-                setEmail("abc@gmail.com");
-
-         */
-
+    public void guestCheckout() throws InterruptedException, IOException {
+        String searchFor = "Blue";
+        BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);
+        Product product = new Product(1215);
         StorePage storePage = new HomePage(driver).
                 load().
                 navigateToStoreUsingMenu().
-                search("Blue");
+                search(searchFor);
         Thread.sleep(2000);
-        Assert.assertEquals(storePage.getTitle(),"Search results: “Blue”");
-        storePage.clickAddToCartBtn("Blue Shoes");
+        Assert.assertEquals(storePage.getTitle(),"Search results: “"+searchFor+"”");
+        storePage.clickAddToCartBtn(product.getName());
 
         Thread.sleep(2000);
         CartPage cartPage = storePage.clickViewCart();
         //td[class='product-name'] a
         Assert.assertEquals(cartPage.getProductName(),
-                "Blue Shoes");
+                product.getName());
         CheckoutPage checkoutPage = cartPage.
                 clickCheckoutBtn().
                 setBillingAddress(billingAddress).
@@ -56,6 +47,7 @@ public class MyFirstTest extends BaseTest {
     }
     @Test
     public void loginAndCheckout() throws InterruptedException, AWTException {
+        String searchFor = "Blue";
         BillingAddress billingAddress = new BillingAddress();
         billingAddress.setFirstName("user");
         billingAddress.setLastName("demo");
@@ -63,12 +55,14 @@ public class MyFirstTest extends BaseTest {
         billingAddress.setCity("San Fransisco");
         billingAddress.setPostalCode("12345");
         billingAddress.setEmail("abc@gmail.com");
+
+        User user = new User("ueser", "demo");
         StorePage storePage = new HomePage(driver).
                 load().
                 navigateToStoreUsingMenu().
-                search("Blue");
+                search(searchFor);
         Thread.sleep(2000);
-        Assert.assertEquals(storePage.getTitle(),"Search results: “Blue”");
+        Assert.assertEquals(storePage.getTitle(),"Search results: “"+searchFor+"”");
         storePage.clickAddToCartBtn("Blue Shoes");
 
         Thread.sleep(2000);
@@ -80,7 +74,7 @@ public class MyFirstTest extends BaseTest {
 
         checkoutPage.clickLoginBtn();
         Thread.sleep(2000);
-        checkoutPage.loginAsCustomer("user", "1234").
+        checkoutPage.loginAsCustomer(user).
                 setBillingAddress(billingAddress).
                 pause(1500).
                 placeOrder();

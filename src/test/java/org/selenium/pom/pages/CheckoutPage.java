@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.selenium.pom.base.BasePage;
 import org.selenium.pom.objects.BillingAddress;
+import org.selenium.pom.objects.User;
 
 public class CheckoutPage extends BasePage {
     private final By firstNameFld = By.id("billing_first_name");
@@ -72,9 +73,9 @@ public class CheckoutPage extends BasePage {
         driver.findElement(passwordFld).sendKeys(password);
         return this;
     }
-    public CheckoutPage loginAsCustomer(String username, String password) {
-        return enterUserName(username).
-                enterPassword(password).
+    public CheckoutPage loginAsCustomer(User user) {
+        return enterUserName(user.getUserName()).
+                enterPassword(user.getPassword()).
                 clickLoginBtn();
     }
     public CheckoutPage pause(long ms) {
