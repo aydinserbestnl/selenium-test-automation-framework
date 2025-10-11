@@ -12,11 +12,12 @@ public class StorePage extends BasePage {
     private final By searchFld = By.id("woocommerce-product-search-field-0");
     private final By searchBtn = By.cssSelector("#woocommerce_product_search-1 > form > button");
     private final By title = By.cssSelector(".woocommerce-products-header__title.page-title");
+    //private final By title = By.cssSelector(".woocommerce-products-header");
     private final By viewCartLink = By.cssSelector("a[title='View cart']");
 
 
     private StorePage enterTextToTheSearchField(String text) {
-        driver.findElement(searchFld).sendKeys(text);
+        wait.until(ExpectedConditions.elementToBeClickable(searchFld)).sendKeys(text);
         return this;
     }
     public boolean isLoaded() {
@@ -30,9 +31,15 @@ public class StorePage extends BasePage {
 //        driver.findElement(searchFld).sendKeys(text);
 //        driver.findElement(searchBtn).click();
         enterTextToTheSearchField(text).clickSearchBtn();
+        // 1️⃣ doğru metin gelene kadar bekle
+        // wait.until(ExpectedConditions.textToBePresentInElementLocated(title, "Search results"));
+        wait.until(ExpectedConditions.urlContains("post_type=product"));
         return this;
     }
     public String getTitle() {
+
+
+
         return driver.findElement(title).getText();
     }
     private By clickAddToCartBtnElement(String productName) {

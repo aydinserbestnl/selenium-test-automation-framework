@@ -15,7 +15,8 @@ public class DriverManager {
 
         // Add the preference to disable password leak detection
         Map<String, Object> prefs = new HashMap<>();
-        prefs.put("profile.password_manager_leak_detection", false);
+        //prefs.put("profile.password_manager_leak_detection", false); //chrome password manager popup ı için
+        //prefs.put("autofill.profile_enabled", false); //stale element hatası için eklendi
         options.setExperimentalOption("prefs", prefs);
 
 
