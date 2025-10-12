@@ -1,4 +1,4 @@
-package org.waits;
+package org.selenium.waits;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;

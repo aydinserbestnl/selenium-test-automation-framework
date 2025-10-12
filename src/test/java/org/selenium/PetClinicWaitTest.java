@@ -28,6 +28,10 @@ public class PetClinicWaitTest {
         driver.findElement(By.id("username")).sendKeys("aydinserbest34@gmail.com");
         driver.findElement(By.id("password")).sendKeys("Sa21342134.");
         driver.findElement(By.cssSelector("button[type='submit']")).click();
+
+// Overlay tamamen kaybolana kadar (ya DOM'dan silinsin ya da görünmez hale gelsin)
+        //spin
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.overlay")));
         By petTypes = By.cssSelector("a[title='pettypes']");
         wait.until(ExpectedConditions.elementToBeClickable(petTypes));
         Thread.sleep(2000);
@@ -46,6 +50,7 @@ public class PetClinicWaitTest {
         WebElement petValue = driver.findElement(By.id("name"));
        // assertEquals("cat", petValue.getDomProperty("value"));
         assertEquals("cat", petValue.getAttribute("value"));
+        driver.quit();
 
 
 //

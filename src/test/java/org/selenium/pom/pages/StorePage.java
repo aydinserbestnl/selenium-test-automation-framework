@@ -37,9 +37,6 @@ public class StorePage extends BasePage {
         return this;
     }
     public String getTitle() {
-
-
-
         return driver.findElement(title).getText();
     }
     private By clickAddToCartBtnElement(String productName) {
