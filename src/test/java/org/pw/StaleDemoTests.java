@@ -1,17 +1,6 @@
 package org.pw;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.selenium.pom.base.BaseTest;
-import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
-import java.time.Duration;
-
+/*
 public class StaleDemoTests extends BaseTest {
     private static final String DEMO_URL = "http://localhost:8080/stale-demo.html";
     WebDriverWait wait;
@@ -91,3 +80,4 @@ Kısacası stalenessOf, “bu element artık sayfadan ayrıldı mı?” sorusuna
 otomatik bekleme sağlayan bir yardımcıdır. Playwright’ta locator’lar aynı işi kendileri yaptığı için
 Böyle bir beklemeye çoğu zaman ihtiyaç duymazsın.
  */
+

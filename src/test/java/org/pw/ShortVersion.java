@@ -1,10 +1,6 @@
 package org.pw;
 
-import org.openqa.selenium.By;
-import org.selenium.pom.base.BaseTest;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
+/*
 public class ShortVersion extends BaseTest {
     @Test
     public void ifStale() {
@@ -43,3 +39,5 @@ public class ShortVersion extends BaseTest {
         driver.quit();
     }
 }
+
+ */

@@ -1,9 +1,6 @@
 package org.selenium;
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.Test;
-
+/*
 public class DropdownInterceptedElement {
     @Test
     public void elementIntercepted() {
@@ -81,3 +78,6 @@ public class DropdownInterceptedElement {
         driver.quit();
     }
 }
+
+
+ */

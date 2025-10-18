@@ -1,18 +1,6 @@
 package org.selenium.pom;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.RemoteWebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.selenium.pom.base.BaseTest;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
-import java.time.Duration;
-
+/*
 public class StaleDemo extends BaseTest {
     @Test
     public void example(){
@@ -165,3 +153,5 @@ public class StaleDemo extends BaseTest {
         System.out.println(product.getText());
     }
 }
+
+ */

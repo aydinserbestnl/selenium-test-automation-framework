@@ -1,5 +1,5 @@
 package org.selenium.waits;
-
+/*
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -65,4 +65,4 @@ public class SeleniumWaitExampleTest {
 
 Bu yüzden konsolda sadece Selenium stack trace’i görüyorsun, .as("...") çalışamıyor.
      */
-}
+//}

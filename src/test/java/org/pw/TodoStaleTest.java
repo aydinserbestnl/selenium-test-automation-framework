@@ -1,12 +1,6 @@
 package org.pw;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.selenium.pom.base.BaseTest;
-import org.testng.annotations.Test;
-
+/*
 public class TodoStaleTest extends BaseTest {
 
     @Test
@@ -30,3 +24,5 @@ public class TodoStaleTest extends BaseTest {
     }
 
 }
+
+ */

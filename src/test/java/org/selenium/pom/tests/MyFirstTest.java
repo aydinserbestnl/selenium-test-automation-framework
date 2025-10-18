@@ -22,7 +22,7 @@ public class MyFirstTest extends BaseTest {
         String searchFor = "Blue";
         BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);
         Product product = new Product(1215);
-        StorePage storePage = new HomePage(driver).
+        StorePage storePage = new HomePage(getDriver()).
                 load().
                 navigateToStoreUsingMenu();
         storePage.isLoaded();
@@ -54,7 +54,7 @@ public class MyFirstTest extends BaseTest {
         billingAddress.setEmail("abc@gmail.com");
 
         User user = new User("ueser", "demo");
-        StorePage storePage = new HomePage(driver).
+        StorePage storePage = new HomePage(getDriver()).
                 load().
                 navigateToStoreUsingMenu().
                 search(searchFor);

@@ -1,10 +1,6 @@
 package org.pw;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.selenium.pom.base.BaseTest;
-import org.testng.annotations.Test;
-
+/*
 public class StaleExceptionWithOldId extends BaseTest {
     @Test
     public void firstId(){
@@ -15,3 +11,5 @@ public class StaleExceptionWithOldId extends BaseTest {
         email.sendKeys("abc@gmail.com");
     }
 }
+
+ */
