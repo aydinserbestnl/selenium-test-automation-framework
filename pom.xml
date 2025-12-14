@@ -20,11 +20,12 @@
             <artifactId>selenium-java</artifactId>
             <version>4.35.0</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.11.0</version>
-        </dependency>
+            <scope>test</scope>
+        </dependency>-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -35,6 +36,13 @@
             <artifactId>assertj-core</artifactId>
             <version>4.0.0-M1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 <build>
     <plugins>
@@ -44,8 +52,8 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>3.5.4</version>
             <configuration>
-              <parallel>methods</parallel>
-               <threadCount>2</threadCount>
+<!--              <parallel>methods</parallel>-->
+<!--               <threadCount>2</threadCount>-->
                 <!-- <suiteXmlFiles>testng.xml</suiteXmlFiles>-->
             </configuration>
 
